@@ -92,7 +92,6 @@ class xtoj:
 if __name__ == '__main__':
     Usage = ' ----- XML to JSON -----\nauthor: ' + __author__ + '\n\nparams:\n\t-h print this help\n\t-d print docstring\n\nusage:\n\txtoj <xml_filename>\t-\tdumps json conversion\n\txtoj <xml_filename> <json_filename>\t-\tdumps json conversion to file\n'
     args = len(sys.argv)
-    print sys.argv[0]
     if args != 2 and args != 3:
         print '-h to show help'
     else:
