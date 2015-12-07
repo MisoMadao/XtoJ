@@ -55,17 +55,16 @@ class xtoj:
         """
         out_dict = {}
         if len(this_root) > 0:
+            out_dict = this_root.attrib
             for item in this_root:
                 try:
-                    if 'name' in item.attrib:
-                        name = item.attrib['name']
-                    else:
-                        name = re.search('}(.*)\'', str(item)).group(1)
+                    name = re.search('}(.*)\'', str(item)).group(1)
                 except:
                     name = str(item)
                 out_dict[name] = self.convert_recursive(item)
             return out_dict
         else:
+            out_dict = this_root.attrib
             if this_root.text is None:
                 return 'Null'
             else:
