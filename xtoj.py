@@ -61,7 +61,17 @@ class xtoj:
                     name = re.search('}(.*)\'', str(item)).group(1)
                 except:
                     name = str(item)
-                out_dict[name] = self.convert_recursive(item)
+                if name not in out_dict:
+                    out_dict[name] = self.convert_recursive(item)
+                else:
+                    # handling lists
+                    if isinstance(out_dict[name], list):
+                        out_dict[name].append(self.convert_recursive(item))
+                    else:
+                        temp_value = out_dict[name]
+                        del out_dict[name]
+                        out_dict[name] = [temp_value]
+                        out_dict[name].append(self.convert_recursive(item))
             return out_dict
         else:
             out_dict = this_root.attrib
